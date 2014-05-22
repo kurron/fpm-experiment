@@ -1,0 +1,56 @@
+# bash script that control starting and stopping the service
+
+# chkconfig: 35 30 70
+# description: foo service startup script 
+#
+
+### BEGIN INIT INFO
+# Provides:          foo
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Should-Start:      $portmap
+# Should-Stop:       $portmap
+# X-Start-Before:    nis
+# X-Stop-After:      nis
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# X-Interactive:     true
+# Short-Description: foo initscript
+# Description:       This file should be used to construct scripts to be
+#                    placed in /etc/init.d.
+### END INIT INFO
+
+start()
+{
+    begin "Starting foo ";
+    return 0
+}
+
+stop()
+{
+    begin "Stopping foo ";
+    return 0
+}
+
+restart()
+{
+    stop && start
+    return 0
+}
+
+case "$1" in
+start)
+    start
+    ;;
+stop)
+    stop
+    ;;
+restart)
+    restart
+    ;;
+*)
+    echo "Usage: $0 {start|stop|restart}"
+    exit 1
+esac
+
+exit

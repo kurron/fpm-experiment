@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# a proxy for an executable JAR
+echo Hello!
